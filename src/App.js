@@ -1,29 +1,30 @@
 import React, { useState } from "react";
 import "./App.css";
-import "./Assignment";
+import "./Question2_3";
+
+
+const HEX_CHARACTERS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
 
 function App() {
   const [state, setState] = useState(0);
   const [backgroundColor, setBackgroundColor] = useState("#fff");
 
-  
   const handleUserClicks = () => {
-    const HexValue = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
     let color = '#';
     for (let i = 0; i < 6; i++){
-      color += HexValue[Math.floor(Math.random() * HexValue.length)];
+      color += HEX_CHARACTERS[Math.floor(Math.random() * HEX_CHARACTERS.length)];
     }
     setBackgroundColor(color)
     setState((prevState) => prevState + 1);
   };
 
   return (
-    <div className="App" style={{ backgroundColor }}>
+    <div className="app" style={{ backgroundColor }}>
       <div className="container">
         <button className="button" onClick={handleUserClicks}>
           Button
         </button>
-        {state > 0 && <div className="badge">{state}</div>}
+        {state ? <div className="badge">{state}</div> : null}
       </div>
     </div>
   );
